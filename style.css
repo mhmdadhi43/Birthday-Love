@@ -1,0 +1,108 @@
+.Body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    text-align: center;
+
+    /* INI YANG PENTING */
+    overflow-y: auto;
+}
+
+/* Judul */
+.Content-1 {
+    font-size: 5vh;
+    color: white;
+    margin-bottom: 20px;
+    animation: heartbeat 2s infinite;
+    text-shadow: 0 0 15px rgba(255,255,255,0.8);
+}
+
+/* Foto */
+.Image-1 {
+    width: 280px;
+    border-radius: 100%;
+    cursor: pointer;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.Image-1:hover {
+    transform: scale(1.05);
+}
+
+/* Pesan cinta */
+.Love-Message {
+    margin-top: 30px;
+    max-width: 500px;
+    font-family: 'Pacifico', cursive;
+    font-size: 22px;
+    color: #fff;
+    opacity: 0;
+    animation: fadeMessage 3s ease forwards;
+    animation-delay: 1.5s;
+    text-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+
+/* Heartbeat */
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.08); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Fade message */
+@keyframes fadeMessage {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Love particles */
+.love {
+    position: fixed;
+    font-size: 24px;
+    animation: explode 1.2s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes explode {
+    from {
+        opacity: 1;
+        transform: translate(0,0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translate(var(--x), var(--y)) scale(1.5);
+    }
+}
+
+.mute-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.25);
+    border: none;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    font-size: 24px;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+    transition: transform 0.2s ease;
+    z-index: 999;
+}
+
+.mute-btn:hover {
+    transform: scale(1.1);
+}

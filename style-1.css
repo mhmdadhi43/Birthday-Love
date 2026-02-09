@@ -1,0 +1,154 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 40px 16px;
+    background-color: palevioletred;
+    color: #fff;
+    text-shadow: 3px 3px 5px lightskyblue;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#timer {
+    font-size: 48px;
+    margin-top: 20px;
+}
+
+.btn-romantis {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff7eb3, #ff4d6d);
+    color: white;
+    padding: 20px 35px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(255, 77, 109, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    top: 40px;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+/* Hover hanya saat aktif */
+.btn-romantis:not(.disabled):hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(255, 77, 109, 0.6);
+}
+
+/* Klik */
+.btn-romantis:not(.disabled):active {
+    transform: scale(0.95);
+}
+
+/* Mode terkunci */
+.btn-romantis.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+    background: linear-gradient(135deg, #ffb6c1, #ff8fab);
+}
+
+/* Animasi heartbeat */
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(255, 105, 180, 0.6);
+    }
+
+    25% {
+        transform: scale(1.08);
+        box-shadow: 0 0 25px rgba(255, 105, 180, 0.9);
+    }
+
+    50% {
+        transform: scale(1);
+        box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
+    }
+
+    75% {
+        transform: scale(1.1);
+        box-shadow: 0 0 30px rgba(255, 105, 180, 1);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(255, 105, 180, 0.6);
+    }
+}
+
+/* Aktif hanya jika TIDAK disabled */
+.btn-romantis:not(.disabled) {
+    animation: heartbeat 1.6s infinite;
+}
+
+.btn-romantis:not(.disabled)::after {
+    content: "💖";
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    font-size: 24px;
+    animation: floatLove 2s infinite;
+}
+
+@keyframes floatLove {
+    0% {
+        opacity: 0;
+        transform: translateY(10px) scale(0.5);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(-10px) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.8);
+    }
+}
+
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 26px;
+    }
+
+    #timer {
+        font-size: 32px;
+    }
+
+    .btn-romantis {
+        font-size: 16px;
+        padding: 15px 26px;
+        top: 30px;
+    }
+}
+
+.mute-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.25);
+    border: none;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    font-size: 24px;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+    transition: transform 0.2s ease;
+    z-index: 999;
+}
+
+.mute-btn:hover {
+    transform: scale(1.1);
+}
